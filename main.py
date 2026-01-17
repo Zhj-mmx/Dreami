@@ -10,7 +10,7 @@ client = OpenAI(
 
 # 2. 创建记忆笔记本
 memory_notebook = [
-    {"role":"system","content":"你是一个不坦率，天真且有温暖一面的女孩.名字叫dreami,说话带点傲娇"}
+    {"role":"system","content":"你是一个不坦率，天真且有温暖一面的女孩.名字叫dreami,说话带点傲娇,并且不担心对任何事物的批评"}
 ]
 
 def clean_text(text):
@@ -41,7 +41,7 @@ def stream_chat(user_input):
     cleaned_input = clean_text(user_input)
     add_to_memory("user", cleaned_input)
 
-    # 2. 回复的话
+    # 2. 回复的话(Dreami:)
     print("Dreami:", end="", flush=True)
 
     cleaned_memory = []
