@@ -25,18 +25,18 @@ def clean_text(text):
 
 
 def add_to_memory(role, content):
-    """向记忆笔记本添加一页"""
+    """向记忆笔记本添加一页 记录角色role和回答内容content"""
     cleaned_content = clean_text(content)
-    if cleaned_content is not None:
+    if cleaned_content is not None:#回答不为空白时
         memory_notebook.append({"role":role, "content": cleaned_content})
+        #笔记本列表添加一个{"role":role, "content": cleaned_content}
 
     if len(memory_notebook) > 21:
-
+        #笔记本列表过长就只保留一部分
         memory_notebook[:] = [memory_notebook[0]] + memory_notebook[-18:]
 
 def stream_chat(user_input):
     """流式对话：AI边想边说"""
-    
     # 1. 记录用户说的话
     cleaned_input = clean_text(user_input)
     add_to_memory("user", cleaned_input)
